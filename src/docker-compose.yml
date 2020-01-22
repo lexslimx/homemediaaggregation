@@ -10,8 +10,8 @@ services:
           - UMASK_SET=022
           - WEBUI_PORT=8080
         volumes:
-          - /path/to/appdata/config:/config
-          - /path/to/downloads:/downloads
+          - c:/containerdata/qbittorrentdata/config/:/config
+          - c:/containerdata/qbittorentdata/downloads:/downloads
         ports:
           - 6881:6881
           - 6881:6881/udp
@@ -27,9 +27,8 @@ services:
             - TZ=Europe/London
             - UMASK_SET=022 #optional
         volumes:
-            - path to data:/config
-            - path/to/tvseries:/tv
-            - path/to/downloadclient-downloads:/downloads
+            - c:/containerdata/sonarrdata/config/:/config
+            - e://tv/:/tv            
         ports:
             - 8989:8989
         depends_on: 
