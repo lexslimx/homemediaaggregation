@@ -16,8 +16,6 @@ services:
           - 6881:6881
           - 6881:6881/udp
           - 8082:8082
-        networks:
-          - frontend
         restart: unless-stopped
 
     radarr:
@@ -33,8 +31,6 @@ services:
             - /movies2/:/movies2
         ports:
             - 7878:7878
-        networks:
-            - frontend
         depends_on: 
             - qbittorrent
     
@@ -52,6 +48,4 @@ services:
         - /share//software/jackett/blackhole:/downloads
       ports:
         - 9117:9117
-      networks:
-        - frontend
       restart: unless-stopped
