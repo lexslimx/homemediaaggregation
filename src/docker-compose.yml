@@ -18,7 +18,7 @@ services:
           - 8082:8082
         restart: unless-stopped
 
-    sonarr:
+    radarr:
         image: lscr.io/linuxserver/radarr
         container_name: radarr
         environment:
