@@ -44,8 +44,8 @@ services:
         - AUTO_UPDATE=true #optional
         - RUN_OPTS=<run options here> #optional
       volumes:
-        - /share/jackett/data:/config #
-        - /share/jackett/blackhole:/downloads
+        - /share/software/jackett/data:/config #
+        - /share//software/jackett/blackhole:/downloads
       ports:
         - 9117:9117
       restart: unless-stopped
