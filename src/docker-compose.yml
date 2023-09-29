@@ -48,9 +48,11 @@ services:
             - D:/music:/media/music
         ports:
             - 8097:8096
+        devices:
+            - /dev/dri:/dev/driv
         restart: unless-stopped
         depends_on: 
-            - qbittorrent         
+            - qbittorrent                 
     
     prowlarr:
         image: lscr.io/linuxserver/prowlarr
