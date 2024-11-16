@@ -1,4 +1,3 @@
-version: '3'
 services:
     qbittorrent:
         image: lscr.io/linuxserver/qbittorrent:latest
@@ -18,21 +17,21 @@ services:
           - 8082:8082
         restart: unless-stopped
 
-    radarr:
-        image: lscr.io/linuxserver/radarr
-        container_name: radarr
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=Europe/London
-        volumes:
-            - D:/mediaserver//radarr/:/config            
-            - D:/mediaserver/movies/:/movies
-            - D:/mediaserver/qbittorentdata/downloads:/downloads         
-        ports:
-            - 7878:7878
-        depends_on: 
-            - qbittorrent    
+    # radarr:
+    #     image: lscr.io/linuxserver/radarr
+    #     container_name: radarr
+    #     environment:
+    #         - PUID=1000
+    #         - PGID=1000
+    #         - TZ=Europe/London
+    #     volumes:
+    #         - D:/mediaserver//radarr/:/config            
+    #         - D:/movies/:/movies
+    #         - D:/mediaserver/qbittorentdata/downloads:/downloads         
+    #     ports:
+    #         - 7878:7878
+    #     depends_on: 
+    #         - qbittorrent    
     
     embyserver:
         image: lscr.io/linuxserver/emby:latest
@@ -44,9 +43,9 @@ services:
         volumes:
             - D:/mediaserver/embyserver/config:/config
             - D:/mediaserver/embyserver/transcode:/transcode
-            - D:/mediaserver/movies:/media/movies
-            - D:/mediaserver/music:/media/music
-            - D:/mediaserver/tv:/media/tv
+            - D:/movies:/media/movies
+            - D:/music:/media/music
+            - D:/tv:/media/tv
         ports:
             - 8096:8096
         restart: unless-stopped
@@ -80,7 +79,7 @@ services:
         volumes:
             - D:/mediaserver/sonarr/config:/config
             - D:/mediaserver/downloads:/downloads
-            - D:/mediaserver/tv:/tv
+            - D:/tv:/tv
             - D:/mediaserver/qbittorentdata/downloads:/downloads
         ports:
             - 8989:8989
@@ -88,23 +87,23 @@ services:
         depends_on: 
             - qbittorrent
 
-    lidarr:
-        image: lscr.io/linuxserver/lidarr:latest
-        container_name: lidarr
-        environment:
-        - PUID=1000
-        - PGID=1000
-        - TZ=Etc/UTC
-        volumes:
-        - D:/mediaserver/liadrr/config:/config
-        - D:/mediaserver/music:/music #optional
-        - D:/mediaserver/Downloads:/downloads #optional
-        - D:/mediaserver/qbittorentdata/downloads:/downloads
-        ports:
-        - 8686:8686
-        restart: unless-stopped
-        depends_on: 
-            - qbittorrent
+    # lidarr:
+    #     image: lscr.io/linuxserver/lidarr:latest
+    #     container_name: lidarr
+    #     environment:
+    #     - PUID=1000
+    #     - PGID=1000
+    #     - TZ=Etc/UTC
+    #     volumes:
+    #     - D:/mediaserver/liadrr/config:/config
+    #     - D:/mediaserver/music:/music #optional
+    #     - D:/mediaserver/Downloads:/downloads #optional
+    #     - D:/mediaserver/qbittorentdata/downloads:/downloads
+    #     ports:
+    #     - 8686:8686
+    #     restart: unless-stopped
+    #     depends_on: 
+    #         - qbittorrent
 
 
 
