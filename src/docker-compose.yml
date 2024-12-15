@@ -17,21 +17,21 @@ services:
           - 8082:8082
         restart: unless-stopped
 
-    # radarr:
-    #     image: lscr.io/linuxserver/radarr
-    #     container_name: radarr
-    #     environment:
-    #         - PUID=1000
-    #         - PGID=1000
-    #         - TZ=Europe/London
-    #     volumes:
-    #         - D:/mediaserver//radarr/:/config            
-    #         - D:/movies/:/movies
-    #         - D:/mediaserver/qbittorentdata/downloads:/downloads         
-    #     ports:
-    #         - 7878:7878
-    #     depends_on: 
-    #         - qbittorrent    
+    radarr:
+        image: lscr.io/linuxserver/radarr
+        container_name: radarr
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/London
+        volumes:
+            - D:/mediaserver//radarr/:/config            
+            - D:/movies/:/movies
+            - D:/mediaserver/qbittorentdata/downloads:/downloads         
+        ports:
+            - 7878:7878
+        depends_on: 
+            - qbittorrent    
     
     embyserver:
         image: lscr.io/linuxserver/emby:latest
