@@ -9,8 +9,8 @@ services:
           - UMASK_SET=022
           - WEBUI_PORT=8082
         volumes:
-          - D:/mediaserver/qbittorrentdata/config/:/config
-          - D:/mediaserver/qbittorentdata/downloads:/downloads
+          - /mnt/dockerdrive/mediaserver/qbittorrentdata/config/:/config
+          - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads
         ports:
           - 6881:6881
           - 6881:6881/udp
@@ -25,9 +25,9 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - D:/mediaserver//radarr/:/config            
-            - D:/movies/:/movies
-            - D:/mediaserver/qbittorentdata/downloads:/downloads         
+            - /mnt/dockerdrive/mediaserver//radarr/:/config            
+            - /mnt/dockerdrive/movies/:/movies
+            - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads         
         ports:
             - 7878:7878
         restart: unless-stopped
@@ -42,11 +42,11 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - D:/mediaserver/embyserver/config:/config
-            - D:/mediaserver/embyserver/transcode:/transcode
-            - D:/movies:/media/movies
-            - D:/music:/media/music
-            - D:/tv:/media/tv
+            - /mnt/dockerdrive/mediaserver/embyserver/config:/config
+            - /mnt/dockerdrive/mediaserver/embyserver/transcode:/transcode
+            - /mnt/dockerdrive/movies:/media/movies
+            - /mnt/dockerdrive/music:/media/music
+            - /mnt/dockerdrive/tv:/media/tv
         ports:
             - 8096:8096
         restart: unless-stopped
@@ -61,9 +61,9 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - D:/mediaserver/prowlarr/config:/config
-            - D:/mediaserver/prowlarr/downloads:/downloads
-            - D:/mediaserver/prowlarr/tv:/tv
+            - /mnt/dockerdrive/mediaserver/prowlarr/config:/config
+            - /mnt/dockerdrive/mediaserver/prowlarr/downloads:/downloads
+            - /mnt/dockerdrive/mediaserver/prowlarr/tv:/tv
         ports:
             - 9696:9696
         restart: unless-stopped
@@ -78,10 +78,10 @@ services:
             - PGID=1000
             - TZ=Europe/London
         volumes:
-            - D:/mediaserver/sonarr/config:/config
-            - D:/mediaserver/downloads:/downloads
-            - D:/tv:/tv
-            - D:/mediaserver/qbittorentdata/downloads:/downloads
+            - /mnt/dockerdrive/mediaserver/sonarr/config:/config
+            - /mnt/dockerdrive/mediaserver/downloads:/downloads
+            - /mnt/dockerdrive/tv:/tv
+            - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads
         ports:
             - 8989:8989
         restart: unless-stopped
@@ -106,8 +106,8 @@ services:
         - PGID=1000
         - TZ=Etc/UTC`
         volumes:
-        - D:/mediaserver/jackett/data:/config
-        - D:/mediaserver/downloads:/downloads
+        - /mnt/dockerdrive/mediaserver/jackett/data:/config
+        - /mnt/dockerdrive/mediaserver/downloads:/downloads
         ports:
         - 9117:9117
         restart: unless-stopped
