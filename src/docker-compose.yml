@@ -30,6 +30,7 @@ services:
             - D:/mediaserver/qbittorentdata/downloads:/downloads         
         ports:
             - 7878:7878
+        restart: unless-stopped
         depends_on: 
             - qbittorrent    
     
@@ -87,23 +88,26 @@ services:
         depends_on: 
             - qbittorrent
 
-    # lidarr:
-    #     image: lscr.io/linuxserver/lidarr:latest
-    #     container_name: lidarr
-    #     environment:
-    #     - PUID=1000
-    #     - PGID=1000
-    #     - TZ=Etc/UTC
-    #     volumes:
-    #     - D:/mediaserver/liadrr/config:/config
-    #     - D:/mediaserver/music:/music #optional
-    #     - D:/mediaserver/Downloads:/downloads #optional
-    #     - D:/mediaserver/qbittorentdata/downloads:/downloads
-    #     ports:
-    #     - 8686:8686
-    #     restart: unless-stopped
-    #     depends_on: 
-    #         - qbittorrent
+    tunnel:
+        image: cloudflare/cloudflared:latest
+        restart: unless-stopped
+        environment:
+            - TUNNEL_URL=http://embyserver:8096
+            - TUNNEL_TOKEN=eyJhIjoiODE4YTkyNDk1ZDZmNDdlMmY1M2U3ZGJjMDRlYjg5YjgiLCJ0IjoiMjZiZDc5MGEtZjAzZC00NzEyLThlODUtMDA1OGUyZTdkYTEzIiwicyI6Ik4yTmhZMlEyWmpJdE5qUXdOUzAwTUdFeUxUbGtNelV0WXpVMk5EWTBaV1V4Tm1FeSJ9
+        command: tunnel run
+        depends_on:
+        - embyserver
 
-
-
+    jackett:
+        image: lscr.io/linuxserver/jackett:latest
+        container_name: jackett
+        environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Etc/UTC`
+        volumes:
+        - D:/mediaserver/jackett/data:/config
+        - D:/mediaserver/downloads:/downloads
+        ports:
+        - 9117:9117
+        restart: unless-stopped
