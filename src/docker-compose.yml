@@ -83,7 +83,7 @@ services:
             - /mnt/dockerdrive/mediaserver/sonarr/config:/config
             - /mnt/dockerdrive/mediaserver/downloads:/downloads
             - /mnt/dockerdrive/tv:/tv
-            - /mnt/dockerdrive/tv:/tv2
+            - /mnt/dockerdrive/tv2:/tv2
             - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads
         ports:
             - 8989:8989
