@@ -27,6 +27,7 @@ services:
         volumes:
             - /mnt/dockerdrive/mediaserver//radarr/:/config            
             - /mnt/dockerdrive/movies/:/movies
+            - /mnt/d/movies/:/movies2
             - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads         
         ports:
             - 7878:7878
@@ -45,6 +46,7 @@ services:
             - /mnt/dockerdrive/mediaserver/embyserver/config:/config
             - /mnt/dockerdrive/mediaserver/embyserver/transcode:/transcode
             - /mnt/dockerdrive/movies:/media/movies
+            - /mnt/d/movies:/media/movies2
             - /mnt/dockerdrive/music:/media/music
             - /mnt/dockerdrive/tv:/media/tv
         ports:
