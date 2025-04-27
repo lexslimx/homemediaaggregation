@@ -49,6 +49,7 @@ services:
             - /mnt/d/movies:/media/movies2
             - /mnt/d/music:/media/music
             - /mnt/dockerdrive/tv:/media/tv
+            - /mnt/d/tv2:/tv2
         ports:
             - 8096:8096
         restart: unless-stopped
