@@ -28,6 +28,7 @@ services:
             - /mnt/dockerdrive/mediaserver//radarr/:/config            
             - /mnt/dockerdrive/movies/:/movies
             - /mnt/d/movies/:/movies2
+            - /mnt/e/movies3/:/movies3
             - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads         
         ports:
             - 7878:7878
@@ -47,9 +48,12 @@ services:
             - /mnt/dockerdrive/mediaserver/embyserver/transcode:/transcode
             - /mnt/dockerdrive/movies:/media/movies
             - /mnt/d/movies:/media/movies2
+            - /mnt/e/movies3:/media/movies3
             - /mnt/d/music:/media/music
+            - /mnt/e/music3:/media/music3
             - /mnt/dockerdrive/tv:/media/tv
             - /mnt/d/tv2:/tv2
+            - /mnt/e/tv3:/tv3
         ports:
             - 8096:8096
         restart: unless-stopped
@@ -85,6 +89,7 @@ services:
             - /mnt/dockerdrive/mediaserver/downloads:/downloads
             - /mnt/dockerdrive/tv:/tv
             - /mnt/d/tv2:/tv2
+            - /mnt/e/tv3:/tv3
             - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads
         ports:
             - 8989:8989
@@ -124,7 +129,8 @@ services:
         - TZ=Etc/UTC
         volumes:
         - /mnt/dockerdrive/mediaserver/liadrr/config:/config
-        - /mnt/d/music:/media/music      
+        - /mnt/d/music:/media/music
+        - /mnt/e/music3:/media/music3
         - /mnt/dockerdrive/mediaserver/qbittorentdata/downloads:/downloads
         ports:
         - 8686:8686
