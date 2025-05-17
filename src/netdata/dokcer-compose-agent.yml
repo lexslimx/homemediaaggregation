@@ -1,9 +1,9 @@
 services:
   netdata:
     image: netdata/netdata:edge
-    container_name: netdata
+    container_name: netdata-child
     ports:
-      - "19999:19999"  # Expose Netdata Web UI
+      - "19999:19999"  # Expose Netdata Web UI for local access
     restart: unless-stopped
     cap_add:
       - SYS_PTRACE
@@ -25,17 +25,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /run/dbus:/run/dbus:ro
     environment:
-      - NETDATA_CLAIM_TOKEN=559zB17sMjtgSvQYvYKcxKPlNHizsb8Xk7XkJfUfaHcJQDTFgEXTtAsyW09bY5CwrmsGAXmb7QnHBOxHu4v8tYpEsVSYDB2gRuRzC2IBCEwvDS_mKMlj4GDND08oljco3cyfPz0
-      - NETDATA_CLAIM_URL=https://app.netdata.cloud
-      - NETDATA_CLAIM_ROOMS=9dd579fc-67e3-4313-b866-92cd0464b271
-      #- NETDATA_STREAM_ACCEPT=all  # Allow all child nodes to stream data
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu] 
+      - NETDATA_STREAM_DESTINATION=20.74.212.17:19999  # Parent node IP and port
+      - NETDATA_STREAM_API_KEY=API_KEY_FOR_CHILD  # Optional: Use if parent requires an API key
 volumes:
   netdataconfig:
   netdatalib:
