@@ -2,8 +2,8 @@ services:
   netdata:
     image: netdata/netdata:edge
     container_name: netdata
-    pid: host
-    network_mode: host
+    ports:
+      - "19999:19999"  # Expose Netdata Web UI
     restart: unless-stopped
     cap_add:
       - SYS_PTRACE
